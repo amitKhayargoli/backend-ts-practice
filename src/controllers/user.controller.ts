@@ -41,4 +41,17 @@ export class UserController {
       console.log("User not found");
     }
   }
+
+  updateUser(req: Request, res: Response) {
+    const userId: string = req.params.userID;
+    const updatedUser = userService.updateUserByID(userId, req.body);
+
+    return res.status(200).json(updatedUser);
+  }
+
+  deleteUser(req: Request, res: Response) {
+    const userId: string = req.params.userID;
+    const deletedUser = userService.deleteUserByID(userId);
+    return res.status(200).json(deletedUser);
+  }
 }
